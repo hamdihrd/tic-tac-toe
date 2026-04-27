@@ -3,6 +3,10 @@
   margin: 0;
   padding: 0;
 }
+:root {
+  --bgwincolor1: #f1747487;
+  --bgwincolor2: #17ae35a4;
+}
 
 body {
   display: grid;
@@ -11,50 +15,154 @@ body {
   min-height: 100vh;
   background-color: #f1f1f1;
 }
+
+/* SIDEBAR STYLES */
 .sidebar {
-  /* width: 300px; */
   height: 100vh;
-  background-color: #fff;
-  padding: 20px;
-  display: grid;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  padding: 30px 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  width: 280px;
+  box-shadow: 2px 0 20px rgba(0, 0, 0, 0.1);
+}
+
+.sidebar > div {
+  background: rgba(255, 255, 255, 0.95);
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  color: #333;
+  display: flex;
+  flex-direction: column;
   gap: 10px;
-  grid-template-columns: auto;
-}
-.sidebar > div {
-  background-color: #d6d4d4;
-  border-radius: 5px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  color: #261f1f;
-  display: grid;
-  place-items: center;
-  padding: 5px;
-  border: 1px solid #b3b0b0;
+  padding: 15px;
+  border: none;
   cursor: pointer;
-}
-.sidebar > div {
-  cursor: pointer; /* Changes cursor to pointer on hover */
-  transition: all 0.3s ease-in-out; /* Base transition */
+  transition: all 0.3s ease;
 }
 
 .sidebar > div:hover {
-  background-color: #b3b0b0;
-  color: #fff;
-  border: 1px solid #b3b0b0;
-  transform: translateX(15px);
-  font-size: large;
-  font-weight: bold;
+  transform: translateX(5px) translateY(-2px);
+  background: white;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
 }
 
 .sidebar > div:active {
-  transform: translateX(10px); /* Less movement on click */
-  transition-duration: 0.05s; /* Instant feedback */
+  transform: translateX(3px) translateY(0px);
 }
+
+/* Input styling */
+.sidebar label {
+  font-weight: 600;
+  color: #667eea;
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-bottom: 5px;
+}
+
+.sidebar input {
+  padding: 10px;
+  border: 2px solid #e0e0e0;
+  border-radius: 8px;
+  font-size: 0.9rem;
+  transition: all 0.3s ease;
+  background: white;
+}
+
+.sidebar input:focus {
+  outline: none;
+  border-color: #667eea;
+  box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+}
+
+.sidebar input:hover {
+  border-color: #764ba2;
+}
+
+/* Player sections */
+.player1,
+.player2 {
+  background: rgba(255, 255, 255, 0.95) !important;
+}
+
+.player1 label {
+  color: #e74c3c;
+}
+
+.player2 label {
+  color: #3498db;
+}
+
+/* Score styling */
+.score1,
+.score2 {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  border-radius: 8px;
+  color: white;
+  font-weight: bold;
+  padding: 8px;
+  text-align: center;
+  font-size: 0.9rem;
+  letter-spacing: 1px;
+  margin-top: 5px;
+  border: none;
+}
+
+/* Button styling */
+.start,
+.restart,
+.resetGame {
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-size: 1rem !important;
+  text-align: center;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%) !important;
+  color: white !important;
+}
+
+.start:hover,
+.restart:hover,
+.resetGame:hover {
+  background: linear-gradient(135deg, #764ba2 0%, #667eea 100%) !important;
+  color: white !important;
+  transform: translateX(5px) translateY(-2px) !important;
+}
+
+.start:active,
+.restart:active,
+.resetGame:active {
+  transform: translateX(3px) translateY(0px) !important;
+}
+
+/* Restart button specific */
+.sidebar .restart {
+  display: none;
+  background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%) !important;
+}
+
+.sidebar .restart:hover {
+  background: linear-gradient(135deg, #f5576c 0%, #f093fb 100%) !important;
+}
+
+/* Reset game button */
+.resetGame {
+  background: linear-gradient(135deg, #fa709a 0%, #fee140 100%) !important;
+}
+
+.resetGame:hover {
+  background: linear-gradient(135deg, #fee140 0%, #fa709a 100%) !important;
+}
+
+/* Grid container (unchanged) */
 .grid {
   display: grid;
-  /* grid-template-columns: repeat(3, 1fr); */
-  /* gap: 10px; */
-  /* padding: 20px; */
+  padding: 20px;
 }
+
+/* Cell styling (unchanged) */
 .cell {
   background-color: #fff;
   border-radius: 5px;
@@ -66,4 +174,30 @@ body {
   font-size: 2rem;
   border: 1px solid #b3b0b0;
   cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.cell:hover {
+  transform: scale(0.98);
+  background-color: #f9f9f9;
+}
+
+/* Win animation (unchanged) */
+.win {
+  color: #fff;
+  border: 1px solid #ee0707;
+  animation: blink 0.5s ease-in-out 3;
+}
+
+@keyframes blink {
+  0%,
+  100% {
+    opacity: 1;
+    background-color: #f3b5495b;
+  }
+  50% {
+    opacity: 0.5;
+    background-color: #ff0000;
+    transform: scale(1.05);
+  }
 }
